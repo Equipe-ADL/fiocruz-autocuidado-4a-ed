@@ -38,6 +38,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: O conceito do senso de coerência (SCO)", path: "/modulo1/aula2/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: A aplicação da salutogênese na APS e a Literacia para Saúde (LS)", path: "/modulo1/aula2/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo1/aula2/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m1a2", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -49,6 +61,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: Compreendendo o termo - Literacia para a Saúde (LS)", path: "/modulo1/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: A LS como alicerce para a promoção da saúde e do autocuidado em saúde", path: "/modulo1/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo1/aula3/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m1a3", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{ type: "link", icon: "closing", title: "Encerramento do Módulo 1", path: "/modulo1/encerramento.html" },
@@ -70,6 +94,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: A promoção da saúde", path: "/modulo2/aula1/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Prevenção de doenças e enfrentamento de doenças crônicas não transmissíveis (DCNT)", path: "/modulo2/aula1/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo2/aula1/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m2a1", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -81,6 +117,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: Cuidado, autocuidado e autocuidado apoiado como estratégias para promoção da saúde", path: "/modulo2/aula2/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Cuidado, autocuidado e autocuidado apoiado como estratégias para prevenção de condições de saúde, doenças ou agravos", path: "/modulo2/aula2/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo2/aula2/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m2a2", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -92,6 +140,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: O cuidado centrado na pessoa e a LS", path: "/modulo2/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: O cuidado centrado na pessoa, o autocuidado da pessoa em condição crônica de saúde e a LS na APS", path: "/modulo2/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo2/aula3/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m2a3", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{ type: "link", icon: "closing", title: "Encerramento do Módulo 2", path: "/modulo2/encerramento.html" },
@@ -113,6 +173,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 3: Os desafios da salutogênese", path: "/modulo3/aula1/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Ações para auxiliar a população na adoção de comportamentos saudáveis e na adesão do tratamento", path: "/modulo3/aula1/topico4.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 5: Considerações finais", path: "/modulo3/aula1/topico5.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m3a1", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -123,6 +195,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 1: Literacia para a Saúde no cenário brasileiro", path: "/modulo3/aula2/topico1.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 2: Boas práticas em Literacia para a Saúde", path: "/modulo3/aula2/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Considerações finais", path: "/modulo3/aula2/topico3.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m3a2", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -134,6 +218,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: Educação popular como pedagogia", path: "/modulo3/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Programação das ações educativas e as DCNT", path: "/modulo3/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo3/aula3/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m3a3", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{ type: "link", icon: "closing", title: "Encerramento do Módulo 3", path: "/modulo3/encerramento.html" },
@@ -154,6 +250,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: Objetivos da comunicação em saúde", path: "/modulo4/aula1/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Estratégias de comunicação na APS e a Literacia para a Saúde", path: "/modulo4/aula1/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo4/aula1/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m4a1", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -166,6 +274,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 3: Internet e Saúde", path: "/modulo4/aula2/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Desinformação e 'Fake News'", path: "/modulo4/aula2/topico4.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 5: Considerações finais", path: "/modulo4/aula2/topico5.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m4a2", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -178,6 +298,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 3: Estratégias de ação para aumentar os níveis de LS por meio da Literacia Digital em Saúde", path: "/modulo4/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: A Literacia Digital em Saúde e sua contribuição para a ampliação da LS na APS", path: "/modulo4/aula3/topico4.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 5: Considerações finais", path: "/modulo4/aula3/topico5.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m4a3", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{ type: "link", icon: "closing", title: "Encerramento do Módulo 4", path: "/modulo4/encerramento.html" },
@@ -198,6 +330,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: Elementos que favorecem a adoção e/ou manutenção de hábitos saudáveis na APS", path: "/modulo5/aula1/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Gestão e investimento em ações de autocuidado", path: "/modulo5/aula1/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo5/aula1/topico4.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m5a1", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -210,6 +354,18 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 3: Relacionamento interprofissional", path: "/modulo5/aula2/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Comunicação em saúde e na saúde", path: "/modulo5/aula2/topico4.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 5: Considerações finais", path: "/modulo5/aula2/topico5.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m5a2", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{
@@ -220,23 +376,35 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 1: Qualidade de vida para o profissional da saúde", path: "/modulo5/aula3/topico1.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 2: Relacionamentos e qualidade de vida: família, espiritualidade, vida social, criatividade, <em>hobby</em> e lazer", path: "/modulo5/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Considerações finais", path: "/modulo5/aula3/topico3.html" },
+						{
+							type: "modal",
+							icon: "autor",
+							title: "Sobre o(a) autor(a)",
+							modal: {
+								id: "modal-sobre-autor-m5a3", //este id tem que ser o mesmo em modal-content/modal-sidebar.html
+								title: "Sobre o(a) autor(a)",
+								size: "lg",
+								footer: "Fechar", //texto do botão, se não tiver deixar em branco
+								lazy: true,
+							},
+						},
 					],
 				},
 				{ type: "link", icon: "closing", title: "Encerramento do Módulo 5", path: "/modulo5/encerramento.html" },
 				{ type: "link", icon: "activity", title: "Atividades", path: "/modulo5/atividades.html" },
 			],
 		},
-		{
-			type: "modal",
-			icon: "autor",
-			title: "Título do item",
-			modal: {
-				id: "modal-promocao-saude",
-				title: "Título do modal",
-				size: "lg",
-				footer: "Fechar", //texto do botão, se não tiver deixar em branco
-				lazy: true,
-			},
-		},
+		// {
+		// 	type: "modal",
+		// 	icon: "autor",
+		// 	title: "Título do item",
+		// 	modal: {
+		// 		id: "modal-promocao-saude",
+		// 		title: "Título do modal",
+		// 		size: "lg",
+		// 		footer: "Fechar", //texto do botão, se não tiver deixar em branco
+		// 		lazy: true,
+		// 	},
+		// },
 	],
 };
