@@ -61,6 +61,8 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: Compreendendo o termo - Literacia para a Saúde (LS)", path: "/modulo1/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: A LS como alicerce para a promoção da saúde e do autocuidado em saúde", path: "/modulo1/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo1/aula3/topico4.html" },
+						{ type: "link", icon: "closing", title: "Encerramento do Módulo 1", path: "/modulo1/aula3/topico5.html" },
+						{ type: "link", icon: "activity", title: "Atividades", path: "/modulo1/aula3/topico6.html" },
 						{
 							type: "modal",
 							icon: "autor",
@@ -75,8 +77,6 @@ const course = {
 						},
 					],
 				},
-				{ type: "link", icon: "closing", title: "Encerramento do Módulo 1", path: "/modulo1/encerramento.html" },
-				{ type: "link", icon: "activity", title: "Atividades", path: "/modulo1/atividades.html" },
 			],
 		},
 
@@ -140,6 +140,8 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: O cuidado centrado na pessoa e a LS", path: "/modulo2/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: O cuidado centrado na pessoa, o autocuidado da pessoa em condição crônica de saúde e a LS na APS", path: "/modulo2/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo2/aula3/topico4.html" },
+						{ type: "link", icon: "closing", title: "Encerramento do Módulo 2", path: "/modulo2/aula3/topico5.html" },
+						{ type: "link", icon: "activity", title: "Atividades", path: "/modulo2/aula3/topico6.html" },
 						{
 							type: "modal",
 							icon: "autor",
@@ -154,8 +156,6 @@ const course = {
 						},
 					],
 				},
-				{ type: "link", icon: "closing", title: "Encerramento do Módulo 2", path: "/modulo2/encerramento.html" },
-				{ type: "link", icon: "activity", title: "Atividades", path: "/modulo2/atividades.html" },
 			],
 		},
 		{
@@ -218,6 +218,8 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 2: Educação popular como pedagogia", path: "/modulo3/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Programação das ações educativas e as DCNT", path: "/modulo3/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: Considerações finais", path: "/modulo3/aula3/topico4.html" },
+						{ type: "link", icon: "closing", title: "Encerramento do Módulo 3", path: "/modulo3/aula3/topico5.html" },
+						{ type: "link", icon: "activity", title: "Atividades", path: "/modulo3/aula3/topico6.html" },
 						{
 							type: "modal",
 							icon: "autor",
@@ -232,8 +234,6 @@ const course = {
 						},
 					],
 				},
-				{ type: "link", icon: "closing", title: "Encerramento do Módulo 3", path: "/modulo3/encerramento.html" },
-				{ type: "link", icon: "activity", title: "Atividades", path: "/modulo3/atividades.html" },
 			],
 		},
 		{
@@ -298,6 +298,8 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 3: Estratégias de ação para aumentar os níveis de LS por meio da Literacia Digital em Saúde", path: "/modulo4/aula3/topico3.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 4: A Literacia Digital em Saúde e sua contribuição para a ampliação da LS na APS", path: "/modulo4/aula3/topico4.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 5: Considerações finais", path: "/modulo4/aula3/topico5.html" },
+						{ type: "link", icon: "closing", title: "Encerramento do Módulo 4", path: "/modulo4/aula3/topico6.html" },
+						{ type: "link", icon: "activity", title: "Atividades", path: "/modulo4/aula3/topico7.html" },
 						{
 							type: "modal",
 							icon: "autor",
@@ -312,8 +314,6 @@ const course = {
 						},
 					],
 				},
-				{ type: "link", icon: "closing", title: "Encerramento do Módulo 4", path: "/modulo4/encerramento.html" },
-				{ type: "link", icon: "activity", title: "Atividades", path: "/modulo4/atividades.html" },
 			],
 		},
 		{
@@ -376,6 +376,8 @@ const course = {
 						{ type: "link", icon: "lesson", title: "Tópico 1: Qualidade de vida para o profissional da saúde", path: "/modulo5/aula3/topico1.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 2: Relacionamentos e qualidade de vida: família, espiritualidade, vida social, criatividade, <em>hobby</em> e lazer", path: "/modulo5/aula3/topico2.html" },
 						{ type: "link", icon: "lesson", title: "Tópico 3: Considerações finais", path: "/modulo5/aula3/topico3.html" },
+						{ type: "link", icon: "closing", title: "Encerramento do Módulo 5", path: "/modulo5/aula3/topico4.html" },
+						{ type: "link", icon: "activity", title: "Atividades", path: "/modulo5/aula3/topico5.html" },
 						{
 							type: "modal",
 							icon: "autor",
@@ -390,8 +392,6 @@ const course = {
 						},
 					],
 				},
-				{ type: "link", icon: "closing", title: "Encerramento do Módulo 5", path: "/modulo5/encerramento.html" },
-				{ type: "link", icon: "activity", title: "Atividades", path: "/modulo5/atividades.html" },
 			],
 		},
 		// {
