@@ -3,15 +3,16 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
-	height: calc(100svh - 80px);
+	min-height: calc(100svh - 80px);
 	position: relative;
 	/* top: 80px; */
 	max-width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-top: 80px;
+	padding-top: 100px;
 }
+
 #page-title::before {
 	content: "";
 	background-image: url(../images/tarja-interna-esq.png);
@@ -25,6 +26,7 @@
 	width: 30%;
 	height: 100%;
 }
+
 #page-title::after {
 	content: "";
 	background-image: url(../images/tarja-interna-dir.png);
@@ -38,12 +40,12 @@
 	width: 30%;
 	height: 100%;
 }
-#page-title__inner {
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+
+.page-title__inner {
+	z-index: 10;
+	width: 90%;
 }
+
 /* #page-title__inner > img {
     position: absolute;
     top: 0;
@@ -60,6 +62,7 @@
 	margin: 0;
 	font-size: 2.2rem;
 }
+
 #page-title__title h2 span {
 	display: block;
 	font-family: "Open Sans Light", sans-serif;
@@ -67,12 +70,19 @@
 	color: var(--secondary-color);
 	font-size: 1.5rem;
 }
+
 /* Medium devices (tablets, up to 992px) */
 @media (min-width: 992px) {
 	#page-title {
 		height: 480px;
+		min-height: auto;
 		/* background-size: auto 400px; */
 	}
+
+	.page-title__inner {
+		width: 60%;
+	}
+
 }
 
 /* Medium devices (tablets, up to 1199px) */
