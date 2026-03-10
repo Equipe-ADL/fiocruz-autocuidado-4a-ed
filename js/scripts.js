@@ -36,8 +36,8 @@ const modalInfos = {
 						<div class="col-12 col-md-10 col-lg-10">
 							<h6 class="mb-2">Ministério da Saúde</h6>
 							<div class="mb-5">
-								<p class="mb-1 small">Nísia Trindade Lima</p>
-								<p class="small text-muted"><em>Ministra</em></p>
+								<p class="mb-1 small">Alexandre Padilha</p>
+								<p class="small text-muted"><em>Ministro</em></p>
 
 								<p class="mb-1 text-muted"><em>Secretaria de Gestão do Trabalho e da Educação na Saúde - SGTES/MS</em></p>
 
@@ -70,7 +70,7 @@ const modalInfos = {
 							<div class="mb-5">
 								<p class="mb-1 small">Mario Moreira</p>
 								<p class="small text-muted"><em>Presidente</em></p>
-								<p class="mb-1 small">Cristiani Vieira Machado</p>
+								<p class="mb-1 small">Marly Cruz</p>
 								<p class="small text-muted"><em>Vice-Presidência de Educação, Informação e Comunicação (VPEIC)</em></p>
 							</div>
 
@@ -80,8 +80,10 @@ const modalInfos = {
 								<p class="small text-muted"><em>Coordenadora geral</em></p>
 								<p class="mb-1 small">Rosane Mendes</p>
 								<p class="small text-muted"><em>Coordenadora adjunta</em></p>
-								<p class="mb-1 small">Adélia Araújo</p>
+								<p class="mb-1 small">Renata Bernades David</p>
 								<p class="small text-muted"><em>Coordenadora de produção</em></p>
+								<p class="mb-1 small">Juliana Dutra</p>
+								<p class="small text-muted"><em>Gerente de produção</em></p>
 
 								<p class="mb-1 small">Roberta Saboya</p>
 								<p class="small text-muted"><em>Designer Educacional</em></p>
@@ -109,7 +111,7 @@ const modalInfos = {
 
 								<p class="mb-1 small">Adriano Lourenço</p>
 								<p class="mb-1 small">Orlando Terra</p>
-								<p class="small text-muted"><em>Suporte Técnico de Tecnologia da Informação - Analista de suporte</em></p>
+								<p class="small text-muted"><em>Analistas de Tecnologia Educacional</em></p>
 							</div>
 
 							<h6 class="mb-2">Coordenação do projeto</h6>
