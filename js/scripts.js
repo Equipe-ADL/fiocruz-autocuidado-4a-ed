@@ -120,8 +120,6 @@ const modalInfos = {
 								<p class="small text-muted"><em>Coordenadora geral</em></p>
 								<p class="mb-1 small">Rosane Aparecida de Sousa</p>
 								<p class="small text-muted"><em>Coordenadora adjunta</em></p>
-								<p class="mb-1 small">Carmen Aprato</p>
-								<p class="small text-muted"><em>Coordenadora executiva</em></p>
 							</div>
 
 							<h6 class="mb-2">Conteudistas</h6>
