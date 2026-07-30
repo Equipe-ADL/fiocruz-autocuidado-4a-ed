@@ -4,499 +4,500 @@
 document.addEventListener("DOMContentLoaded", initSidebar);
 
 function initSidebar() {
-	const sidebarRoot = document.getElementById("sidebar");
-	if (!sidebarRoot) return;
+    const sidebarRoot = document.getElementById("sidebar");
+    if (!sidebarRoot) return;
 
-	/* =================================================
-	DOM HELPERS
-	================================================= */
+    /* =================================================
+    DOM HELPERS
+    ================================================= */
 
-	function el(tag, classes = [], text = null) {
-		const element = document.createElement(tag);
+    function el(tag, classes = [], text = null) {
+        const element = document.createElement(tag);
 
-		if (classes.length) element.classList.add(...classes);
+        if (classes.length) element.classList.add(...classes);
 
-		if (text !== null) element.textContent = text;
+        if (text !== null) element.textContent = text;
 
-		return element;
-	}
+        return element;
+    }
 
-	/* =================================================
-	UTILS
-	================================================= */
+    /* =================================================
+    UTILS
+    ================================================= */
 
-	function getCurrentPath() {
-		return window.location.pathname.replace(/\/$/, "");
-	}
+    function getCurrentPath() {
+        return window.location.pathname.replace(/\/$/, "");
+    }
 
-	function getBasePath() {
-		const parts = window.location.pathname.split("/").filter(Boolean);
+    function getBasePath() {
+        const parts = window.location.pathname.split("/").filter(Boolean);
 
-		const index = parts.findIndex((p) => /^modulo\d+/i.test(p));
+        const index = parts.findIndex((p) => /^modulo\d+/i.test(p));
 
-		return index > 0 ? "/" + parts.slice(0, index).join("/") : "";
-	}
+        return index > 0 ? "/" + parts.slice(0, index).join("/") : "";
+    }
 
-	let modalCache = null;
+    let modalCache = null;
 
-	function loadModalFile() {
-		if (modalCache) {
-			return Promise.resolve(modalCache);
-		}
+    function loadModalFile() {
+        if (modalCache) {
+            return Promise.resolve(modalCache);
+        }
 
-		const src = "/js/modal-content/modal-sidebar.html";
+        // Use the basePath variable to build the correct URL for GitHub Pages subdirectories
+        const src = basePath + "/js/modal-content/modal-sidebar.html";
 
-		return fetch(src)
-			.then((res) => {
-				if (!res.ok) {
-					throw new Error("Erro ao carregar modais: " + src);
-				}
-				return res.text();
-			})
-			.then((html) => {
-				modalCache = html;
-				return html;
-			});
-	}
+        return fetch(src)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("Erro ao carregar modais: " + src);
+                }
+                return res.text();
+            })
+            .then((html) => {
+                modalCache = html;
+                return html;
+            });
+    }
 
-	const basePath = getBasePath();
+    const basePath = getBasePath();
 
-	const hasActiveChild = (items) =>
-		items?.some((item) => {
-			if (item.type === "link") {
-				const full = basePath + item.path;
+    const hasActiveChild = (items) =>
+        items?.some((item) => {
+            if (item.type === "link") {
+                const full = basePath + item.path;
 
-				return full === getCurrentPath();
-			}
+                return full === getCurrentPath();
+            }
 
-			if (item.type === "accordion") {
-				return hasActiveChild(item.items);
-			}
-		});
+            if (item.type === "accordion") {
+                return hasActiveChild(item.items);
+            }
+        });
 
-	/* =================================================
-	COMPONENT REGISTRY
-	================================================= */
+    /* =================================================
+    COMPONENT REGISTRY
+    ================================================= */
 
-	const Components = {
-		link: createLinkItem,
+    const Components = {
+        link: createLinkItem,
 
-		accordion: createAccordionItem,
+        accordion: createAccordionItem,
 
-		modal: createModalItem,
-	};
+        modal: createModalItem,
+    };
 
-	/* =================================================
-	LINK COMPONENT
-	================================================= */
+    /* =================================================
+    LINK COMPONENT
+    ================================================= */
 
-	function createLinkItem(item) {
-		const full = basePath + item.path;
+    function createLinkItem(item) {
+        const full = basePath + item.path;
 
-		const link = el("a", ["list-group-item", "link-item"], item.title);
+        const link = el("a", ["list-group-item", "link-item"], item.title);
 
-		link.href = full;
+        link.href = full;
 
-		if (item.icon) link.classList.add(`icon-${item.icon}`);
+        if (item.icon) link.classList.add(`icon-${item.icon}`);
 
-		if (full === getCurrentPath()) link.classList.add("active");
+        if (full === getCurrentPath()) link.classList.add("active");
 
-		return link;
-	}
+        return link;
+    }
 
-	/* =================================================
-	MODAL COMPONENT
-	================================================= */
+    /* =================================================
+    MODAL COMPONENT
+    ================================================= */
 
-	function createModalItem(item) {
-		const button = el("button", ["list-group-item", "link-item"], item.title);
+    function createModalItem(item) {
+        const button = el("button", ["list-group-item", "link-item"], item.title);
 
-		button.type = "button";
+        button.type = "button";
 
-		button.dataset.toggle = "modal";
-		button.dataset.target = `#${item.modal.id}`;
+        button.dataset.toggle = "modal";
+        button.dataset.target = `#${item.modal.id}`;
 
-		if (item.icon) button.classList.add(`icon-${item.icon}`);
+        if (item.icon) button.classList.add(`icon-${item.icon}`);
 
-		createModalIfNeeded(item.modal);
+        createModalIfNeeded(item.modal);
 
-		return button;
-	}
+        return button;
+    }
 
-	/* =================================================
-	MODAL BUILDER
-	================================================= */
+    /* =================================================
+    MODAL BUILDER
+    ================================================= */
 
-	function createModalIfNeeded(config) {
-		if (document.getElementById(config.id)) return;
+    function createModalIfNeeded(config) {
+        if (document.getElementById(config.id)) return;
 
-		const modal = el("div", ["modal", "fade"]);
-		modal.id = config.id;
+        const modal = el("div", ["modal", "fade"]);
+        modal.id = config.id;
 
-		const dialog = el("div", ["modal-dialog"]);
+        const dialog = el("div", ["modal-dialog"]);
 
-		if (config.size) dialog.classList.add(`modal-${config.size}`);
+        if (config.size) dialog.classList.add(`modal-${config.size}`);
 
-		const content = el("div", ["modal-content"]);
+        const content = el("div", ["modal-content"]);
 
-		const header = el("div", ["modal-header"]);
+        const header = el("div", ["modal-header"]);
 
-		const title = el("h5", ["modal-title"], config.title || "");
+        const title = el("h5", ["modal-title"], config.title || "");
 
-		const close = el("button", ["close"]);
-		close.dataset.dismiss = "modal";
-		close.innerHTML = "&times;";
+        const close = el("button", ["close"]);
+        close.dataset.dismiss = "modal";
+        close.innerHTML = "&times;";
 
-		header.append(title, close);
+        header.append(title, close);
 
-		const body = el("div", ["modal-body"]);
+        const body = el("div", ["modal-body"]);
 
-		loadModalContent(config.id, body);
+        loadModalContent(config.id, body);
 
-		content.append(header, body);
+        content.append(header, body);
 
-		if (config.footer) {
-			const footer = el("div", ["modal-footer"]);
+        if (config.footer) {
+            const footer = el("div", ["modal-footer"]);
 
-			const btn = el("button", ["button-primary"], config.footer);
+            const btn = el("button", ["button-primary"], config.footer);
 
-			btn.dataset.dismiss = "modal";
+            btn.dataset.dismiss = "modal";
 
-			footer.appendChild(btn);
+            footer.appendChild(btn);
 
-			content.appendChild(footer);
-		}
+            content.appendChild(footer);
+        }
 
-		dialog.appendChild(content);
+        dialog.appendChild(content);
 
-		modal.appendChild(dialog);
+        modal.appendChild(dialog);
 
-		document.body.appendChild(modal);
-	}
+        document.body.appendChild(modal);
+    }
 
-	function loadModalContent(id, body) {
-		loadModalFile().then((html) => {
-			const container = document.createElement("div");
-			container.innerHTML = html;
+    function loadModalContent(id, body) {
+        loadModalFile().then((html) => {
+            const container = document.createElement("div");
+            container.innerHTML = html;
 
-			const modalContent = container.querySelector("#" + id);
+            const modalContent = container.querySelector("#" + id);
 
-			if (!modalContent) {
-				console.warn("Modal não encontrado:", id);
-				return;
-			}
+            if (!modalContent) {
+                console.warn("Modal não encontrado:", id);
+                return;
+            }
 
-			body.appendChild(modalContent.cloneNode(true));
-		});
-	}
+            body.appendChild(modalContent.cloneNode(true));
+        });
+    }
 
-	/* =================================================
-	ACCORDION COMPONENT
-	================================================= */
+    /* =================================================
+    ACCORDION COMPONENT
+    ================================================= */
 
-	function createAccordionItem(item, parent, parentId, index) {
-		const id = `${parentId}-${index}`;
+    function createAccordionItem(item, parent, parentId, index) {
+        const id = `${parentId}-${index}`;
 
-		const isActive = hasActiveChild(item.items);
+        const isActive = hasActiveChild(item.items);
 
-		const accordionItem = el("div", ["accordion-item"]);
+        const accordionItem = el("div", ["accordion-item"]);
 
-		const header = el("h2", ["accordion-header"]);
-		header.id = `${id}-header`;
+        const header = el("h2", ["accordion-header"]);
+        header.id = `${id}-header`;
 
-		const button = el("button", ["accordion-button"], item.title);
+        const button = el("button", ["accordion-button"], item.title);
 
-		if (!isActive) button.classList.add("collapsed");
+        if (!isActive) button.classList.add("collapsed");
 
-		button.type = "button";
+        button.type = "button";
 
-		button.dataset.toggle = "collapse";
-		button.dataset.target = `#${id}`;
+        button.dataset.toggle = "collapse";
+        button.dataset.target = `#${id}`;
 
-		button.setAttribute("aria-expanded", isActive ? "true" : "false");
+        button.setAttribute("aria-expanded", isActive ? "true" : "false");
 
-		header.appendChild(button);
+        header.appendChild(button);
 
-		const collapse = el("div", ["accordion-collapse", "collapse"]);
-		collapse.id = id;
+        const collapse = el("div", ["accordion-collapse", "collapse"]);
+        collapse.id = id;
 
-		if (isActive) collapse.classList.add("show");
+        if (isActive) collapse.classList.add("show");
 
-		collapse.dataset.parent = `#${parentId}`;
+        collapse.dataset.parent = `#${parentId}`;
 
-		const body = el("div", ["accordion-body", "list-group"]);
+        const body = el("div", ["accordion-body", "list-group"]);
 
-		const nestedAccordion = el("div", ["accordion"]);
-		nestedAccordion.id = `${id}-items`;
+        const nestedAccordion = el("div", ["accordion"]);
+        nestedAccordion.id = `${id}-items`;
 
-		body.appendChild(nestedAccordion);
+        body.appendChild(nestedAccordion);
 
-		collapse.appendChild(body);
+        collapse.appendChild(body);
 
-		accordionItem.append(header, collapse);
+        accordionItem.append(header, collapse);
 
-		parent.appendChild(accordionItem);
+        parent.appendChild(accordionItem);
 
-		renderItems(item.items, nestedAccordion, nestedAccordion.id);
-	}
+        renderItems(item.items, nestedAccordion, nestedAccordion.id);
+    }
 
-	/* =================================================
-	RENDER ENGINE
-	================================================= */
+    /* =================================================
+    RENDER ENGINE
+    ================================================= */
 
-	function renderItems(items, parent, parentId) {
-		items?.forEach((item, i) => {
-			const component = Components[item.type];
+    function renderItems(items, parent, parentId) {
+        items?.forEach((item, i) => {
+            const component = Components[item.type];
 
-			if (!component) {
-				console.warn("Tipo não suportado:", item.type);
+            if (!component) {
+                console.warn("Tipo não suportado:", item.type);
 
-				return;
-			}
+                return;
+            }
 
-			if (item.type === "accordion") {
-				component(item, parent, parentId, i);
-			} else {
-				parent.appendChild(component(item));
-			}
-		});
-	}
+            if (item.type === "accordion") {
+                component(item, parent, parentId, i);
+            } else {
+                parent.appendChild(component(item));
+            }
+        });
+    }
 
-	/* =================================================
-	RENDER SIDEBAR
-	================================================= */
+    /* =================================================
+    RENDER SIDEBAR
+    ================================================= */
 
-	function renderSidebar() {
-		sidebarRoot.innerHTML = "";
+    function renderSidebar() {
+        sidebarRoot.innerHTML = "";
 
-		const sidebarInner = el("div", ["sidebar__inner"]);
+        const sidebarInner = el("div", ["sidebar__inner"]);
 
-		sidebarInner.appendChild(createMobileHeader());
+        sidebarInner.appendChild(createMobileHeader());
 
-		sidebarInner.appendChild(createModules());
+        sidebarInner.appendChild(createModules());
 
-		sidebarRoot.appendChild(sidebarInner);
-	}
+        sidebarRoot.appendChild(sidebarInner);
+    }
 
-	/* =================================================
-	MOBILE HEADER
-	================================================= */
+    /* =================================================
+    MOBILE HEADER
+    ================================================= */
 
-	function createMobileHeader() {
-		const section = el("section", ["sidebar__section", "mobile-only"]);
+    function createMobileHeader() {
+        const section = el("section", ["sidebar__section", "mobile-only"]);
 
-		const header = el("div", ["sidebar__section-header"]);
+        const header = el("div", ["sidebar__section-header"]);
 
-		const courseName = el("div", ["course-name"]);
+        const courseName = el("div", ["course-name"]);
 
-		const title = el("h2", [], course.title);
+        const title = el("h2", [], course.title);
 
-		courseName.appendChild(title);
+        courseName.appendChild(title);
 
-		const toggle = el("div", ["mobile-toggle-close"]);
+        const toggle = el("div", ["mobile-toggle-close"]);
 
-		const button = el("a", ["mobile-toggle__button"]);
+        const button = el("a", ["mobile-toggle__button"]);
 
-		button.role = "button";
+        button.role = "button";
 
-		const icon = el("span", ["icon", "material-symbols-rounded"], "read_more");
+        const icon = el("span", ["icon", "material-symbols-rounded"], "read_more");
 
-		button.appendChild(icon);
+        button.appendChild(icon);
 
-		toggle.appendChild(button);
+        toggle.appendChild(button);
 
-		header.append(courseName, toggle);
+        header.append(courseName, toggle);
 
-		section.appendChild(header);
+        section.appendChild(header);
 
-		return section;
-	}
+        return section;
+    }
 
-	/* =================================================
-	MODULES ROOT
-	================================================= */
+    /* =================================================
+    MODULES ROOT
+    ================================================= */
 
-	function createModules() {
-		const section = el("section", ["sidebar__section"]);
+    function createModules() {
+        const section = el("section", ["sidebar__section"]);
 
-		const wrap = el("div", ["sidebar__section-accordion"]);
+        const wrap = el("div", ["sidebar__section-accordion"]);
 
-		const accordion = el("div", ["accordion"]);
+        const accordion = el("div", ["accordion"]);
 
-		accordion.id = "sidebarAccordion";
+        accordion.id = "sidebarAccordion";
 
-		renderItems(course.modules, accordion, "sidebarAccordion");
+        renderItems(course.modules, accordion, "sidebarAccordion");
 
-		wrap.appendChild(accordion);
+        wrap.appendChild(accordion);
 
-		section.appendChild(wrap);
+        section.appendChild(wrap);
 
-		return section;
-	}
+        return section;
+    }
 
-	/* =================================================
-	ACTIVE STATE
-	================================================= */
+    /* =================================================
+    ACTIVE STATE
+    ================================================= */
 
-	function updateActiveState() {
-		const links = sidebarRoot.querySelectorAll(".link-item");
+    function updateActiveState() {
+        const links = sidebarRoot.querySelectorAll(".link-item");
 
-		const current = getCurrentPath();
+        const current = getCurrentPath();
 
-		links.forEach((link) => {
-			if (link.getAttribute("href") === current) {
-				link.classList.add("active");
+        links.forEach((link) => {
+            if (link.getAttribute("href") === current) {
+                link.classList.add("active");
 
-				const collapse = link.closest(".accordion-collapse");
+                const collapse = link.closest(".accordion-collapse");
 
-				if (collapse && !collapse.classList.contains("show")) {
-					const button = collapse.closest(".accordion-item")?.querySelector(".accordion-button");
+                if (collapse && !collapse.classList.contains("show")) {
+                    const button = collapse.closest(".accordion-item")?.querySelector(".accordion-button");
 
-					button?.classList.remove("collapsed");
+                    button?.classList.remove("collapsed");
 
-					collapse.classList.add("show");
-				}
-			} else {
-				link.classList.remove("active");
-			}
-		});
-	}
+                    collapse.classList.add("show");
+                }
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    }
 
-	/* =================================================
-	NAVIGATION OBSERVER
-	================================================= */
+    /* =================================================
+    NAVIGATION OBSERVER
+    ================================================= */
 
-	function observeNavigation() {
-		const wrap = (type) => {
-			const orig = history[type];
+    function observeNavigation() {
+        const wrap = (type) => {
+            const orig = history[type];
 
-			history[type] = function () {
-				const rv = orig.apply(this, arguments);
+            history[type] = function () {
+                const rv = orig.apply(this, arguments);
 
-				setTimeout(() => {
-					window.dispatchEvent(new Event("locationchange"));
-				}, 50);
+                setTimeout(() => {
+                    window.dispatchEvent(new Event("locationchange"));
+                }, 50);
 
-				return rv;
-			};
-		};
+                return rv;
+            };
+        };
 
-		wrap("pushState");
+        wrap("pushState");
 
-		wrap("replaceState");
+        wrap("replaceState");
 
-		window.addEventListener("popstate", () => {
-			setTimeout(() => {
-				window.dispatchEvent(new Event("locationchange"));
-			}, 50);
-		});
+        window.addEventListener("popstate", () => {
+            setTimeout(() => {
+                window.dispatchEvent(new Event("locationchange"));
+            }, 50);
+        });
 
-		window.addEventListener("locationchange", updateActiveState);
-	}
+        window.addEventListener("locationchange", updateActiveState);
+    }
 
-	/* =================================================
-	STICKY SIDEBAR
-	================================================= */
+    /* =================================================
+    STICKY SIDEBAR
+    ================================================= */
 
-	function initStickySidebar() {
-		if (typeof StickySidebar !== "undefined" && window.innerWidth > 992) {
-			new StickySidebar("#sidebar", {
-				topSpacing: 0,
+    function initStickySidebar() {
+        if (typeof StickySidebar !== "undefined" && window.innerWidth > 992) {
+            new StickySidebar("#sidebar", {
+                topSpacing: 0,
 
-				bottomSpacing: 0,
+                bottomSpacing: 0,
 
-				containerSelector: ".content",
+                containerSelector: ".content",
 
-				innerWrapperSelector: ".sidebar__inner",
-			});
-		}
-	}
+                innerWrapperSelector: ".sidebar__inner",
+            });
+        }
+    }
 
-	/* =================================================
-	HIDE SIDEBAR
-	================================================= */
+    /* =================================================
+    HIDE SIDEBAR
+    ================================================= */
 
-	function initHideSidebar() {
-		const hideBtn = document.getElementById("hidebar-button");
+    function initHideSidebar() {
+        const hideBtn = document.getElementById("hidebar-button");
 
-		const page = document.getElementById("page");
+        const page = document.getElementById("page");
 
-		const inner = document.querySelector(".sidebar__inner");
+        const inner = document.querySelector(".sidebar__inner");
 
-		if (!hideBtn || !page || !inner) return;
+        if (!hideBtn || !page || !inner) return;
 
-		hideBtn.addEventListener("click", () => {
-			const fixed = window.getComputedStyle(inner).position === "fixed";
+        hideBtn.addEventListener("click", () => {
+            const fixed = window.getComputedStyle(inner).position === "fixed";
 
-			if (!sidebarRoot.classList.contains("hide")) {
-				sidebarRoot.style.marginLeft = "-370px";
+            if (!sidebarRoot.classList.contains("hide")) {
+                sidebarRoot.style.marginLeft = "-370px";
 
-				if (fixed) inner.style.left = "-370px";
+                if (fixed) inner.style.left = "-370px";
 
-				hideBtn.style.left = "10px";
+                hideBtn.style.left = "10px";
 
-				page.style.marginLeft = "10px";
+                page.style.marginLeft = "10px";
 
-				hideBtn.classList.toggle("hidebar-button--close");
+                hideBtn.classList.toggle("hidebar-button--close");
 
-				sidebarRoot.classList.add("hide");
-			} else {
-				sidebarRoot.style.marginLeft = "0";
+                sidebarRoot.classList.add("hide");
+            } else {
+                sidebarRoot.style.marginLeft = "0";
 
-				if (fixed) inner.style.left = "0";
+                if (fixed) inner.style.left = "0";
 
-				hideBtn.style.left = "380px";
+                hideBtn.style.left = "380px";
 
-				page.style.marginLeft = "380px";
+                page.style.marginLeft = "380px";
 
-				hideBtn.classList.toggle("hidebar-button--close");
+                hideBtn.classList.toggle("hidebar-button--close");
 
-				sidebarRoot.classList.remove("hide");
-			}
-		});
-	}
+                sidebarRoot.classList.remove("hide");
+            }
+        });
+    }
 
-	/* =================================================
-	MOBILE TOGGLE
-	================================================= */
+    /* =================================================
+    MOBILE TOGGLE
+    ================================================= */
 
-	function initMobileToggle() {
-		const open = document.querySelector(".mobile-toggle-open .mobile-toggle__button");
+    function initMobileToggle() {
+        const open = document.querySelector(".mobile-toggle-open .mobile-toggle__button");
 
-		const close = document.querySelector(".mobile-toggle-close .mobile-toggle__button");
+        const close = document.querySelector(".mobile-toggle-close .mobile-toggle__button");
 
-		const html = document.querySelector("html");
+        const html = document.querySelector("html");
 
-		if (open) {
-			open.addEventListener("click", () => {
-				sidebarRoot.classList.add("sidebar-show");
+        if (open) {
+            open.addEventListener("click", () => {
+                sidebarRoot.classList.add("sidebar-show");
 
-				html.classList.add("html-overflow");
-			});
-		}
+                html.classList.add("html-overflow");
+            });
+        }
 
-		if (close) {
-			close.addEventListener("click", () => {
-				sidebarRoot.classList.remove("sidebar-show");
+        if (close) {
+            close.addEventListener("click", () => {
+                sidebarRoot.classList.remove("sidebar-show");
 
-				html.classList.remove("html-overflow");
-			});
-		}
-	}
+                html.classList.remove("html-overflow");
+            });
+        }
+    }
 
-	/* =================================================
-	INIT
-	================================================= */
+    /* =================================================
+    INIT
+    ================================================= */
 
-	renderSidebar();
+    renderSidebar();
 
-	updateActiveState();
+    updateActiveState();
 
-	observeNavigation();
+    observeNavigation();
 
-	initStickySidebar();
+    initStickySidebar();
 
-	initHideSidebar();
+    initHideSidebar();
 
-	initMobileToggle();
+    initMobileToggle();
 }
